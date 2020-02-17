@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Form validation</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<section id="exercise">
+    Create a function that validates the next form, each field should be validated when it loses focus, if the field does not meet the requirements a message should appear in the Errors section
+
+    when the user Submits the form, you should validate all the fields in the form and if there is an error in one of the fields, the form won't be sent.
+
+    This are the requirements for each field:
+
+    <ul>
+        <li><label>First Name, Email, Comments:</label> are required fields</li>
+        <li><label>Email:</label> should be a valid email address</li>
+        <li><label>Comments:</label> the character max limit is 50</li>
+        <li><label>Password:</label> should have a 6 characters minimum length and contains at leas 1 lowercase, 1 uppercase and 1 digit</li>
+
+    </ul>
+</section>
+<section class="container">
+    <form method="POST" id="signIn" onsubmit="return validacion()">
+        <fieldset>
+            <legend>Sign In</legend>
+            <ul class="flex-outer">
+                <li>
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" placeholder="Enter your first name here">
+                </li>
+                <li>
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" placeholder="Enter your last name here">
+                </li>
+                <li>
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Enter your email here">
+                </li>
+                <li>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password here">
+                </li>
+                <li>
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone" placeholder="Enter your phone here">
+                </li>
+                <li>
+                    <p>Vehicle</p>
+                    <ul class="vehicle">
+                        <li>
+                            <input type="checkbox" id="car" name="car" value="car">
+                            <label for="car">I have a Car</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="bike" name="bike" value="bike">
+                            <label for="bike">I have a Bike</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="motorcycle" name="motorcycle" value="motorcycle">
+                            <label for="motorcycle">I have a Motorcycle</label>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <label for="comments">Comments</label>
+                    <textarea rows="6" id="comments" placeholder="Enter your comments here"></textarea>
+                </li>
+                <li class="error-list hidden">
+                    <label>Error</label>
+                    <ul>
+                        <li>first name</li>
+                    </ul>
+                </li>
+                <li>
+                    <button type="submit">Submit</button>
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+</section>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
