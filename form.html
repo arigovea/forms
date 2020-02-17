@@ -29,23 +29,28 @@
             <ul class="flex-outer">
                 <li>
                     <label for="first-name">First Name</label>
-                    <input type="text" id="first-name" placeholder="Enter your first name here">
+                    <input type="text" id="first-name" placeholder="Enter your first name here"
+                    onblur="valfields('first-name')">
                 </li>
                 <li>
                     <label for="last-name">Last Name</label>
-                    <input type="text" id="last-name" placeholder="Enter your last name here">
+                    <input type="text" id="last-name" placeholder="Enter your last name here"
+                    onblur="valfields('last-name')">
                 </li>
                 <li>
                     <label for="email">Email</label>
-                    <input type="text" id="email" placeholder="Enter your email here">
+                    <input type="text" id="email" placeholder="Enter your email here"
+                    onblur = "valfields('email')">
                 </li>
                 <li>
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password here">
+                    <input type="password" id="password" placeholder="Enter your password here"
+                    onblur = "valfields('password')">
                 </li>
                 <li>
                     <label for="phone">Phone</label>
-                    <input type="text" id="phone" placeholder="Enter your phone here">
+                    <input type="text" id="phone" placeholder="Enter your phone here"
+                    onblur = "valfields('phone')">
                 </li>
                 <li>
                     <p>Vehicle</p>
@@ -66,12 +71,12 @@
                 </li>
                 <li>
                     <label for="comments">Comments</label>
-                    <textarea rows="6" id="comments" placeholder="Enter your comments here"></textarea>
+                    <textarea rows="6" id="comments" placeholder="Enter your comments here"
+                    onblur = "valfields('comments')"></textarea>
                 </li>
                 <li class="error-list hidden">
                     <label>Error</label>
-                    <ul>
-                        <li>first name</li>
+                    <ul id = errors>
                     </ul>
                 </li>
                 <li>
