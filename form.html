@@ -1,91 +1,226 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Form validation</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-<section id="exercise">
-    Create a function that validates the next form, each field should be validated when it loses focus, if the field does not meet the requirements a message should appear in the Errors section
+    <section id="exercise">
+        Create a function that validates the next form, each field should be validated when it loses focus, if the field
+        does not meet the requirements a message should appear in the Errors section
 
-    when the user Submits the form, you should validate all the fields in the form and if there is an error in one of the fields, the form won't be sent.
+        when the user Submits the form, you should validate all the fields in the form and if there is an error in one
+        of the fields, the form won't be sent.
 
-    This are the requirements for each field:
+        This are the requirements for each field:
 
-    <ul>
-        <li><label>First Name, Email, Comments:</label> are required fields</li>
-        <li><label>Email:</label> should be a valid email address</li>
-        <li><label>Comments:</label> the character max limit is 50</li>
-        <li><label>Password:</label> should have a 6 characters minimum length and contains at leas 1 lowercase, 1 uppercase and 1 digit</li>
+        <ul>
+            <li><label>First Name, Email, Comments:</label> are required fields</li>
+            <li><label>Email:</label> should be a valid email address</li>
+            <li><label>Comments:</label> the character max limit is 50</li>
+            <li><label>Password:</label> should have a 6 characters minimum length and contains at leas 1 lowercase, 1
+                uppercase and 1 digit</li>
 
-    </ul>
-</section>
-<section class="container">
-    <form method="POST" id="signIn" onsubmit="return validacion()">
-        <fieldset>
-            <legend>Sign In</legend>
-            <ul class="flex-outer">
-                <li>
-                    <label for="first-name">First Name</label>
-                    <input type="text" id="first-name" placeholder="Enter your first name here"
-                    onblur="valfields('first-name')">
-                </li>
-                <li>
-                    <label for="last-name">Last Name</label>
-                    <input type="text" id="last-name" placeholder="Enter your last name here"
-                    onblur="valfields('last-name')">
-                </li>
-                <li>
-                    <label for="email">Email</label>
-                    <input type="text" id="email" placeholder="Enter your email here"
-                    onblur = "valfields('email')">
-                </li>
-                <li>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password here"
-                    onblur = "valfields('password')">
-                </li>
-                <li>
-                    <label for="phone">Phone</label>
-                    <input type="text" id="phone" placeholder="Enter your phone here"
-                    onblur = "valfields('phone')">
-                </li>
-                <li>
-                    <p>Vehicle</p>
-                    <ul class="vehicle">
-                        <li>
-                            <input type="checkbox" id="car" name="car" value="car">
-                            <label for="car">I have a Car</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="bike" name="bike" value="bike">
-                            <label for="bike">I have a Bike</label>
-                        </li>
-                        <li>
-                            <input type="checkbox" id="motorcycle" name="motorcycle" value="motorcycle">
-                            <label for="motorcycle">I have a Motorcycle</label>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <label for="comments">Comments</label>
-                    <textarea rows="6" id="comments" placeholder="Enter your comments here"
-                    onblur = "valfields('comments')"></textarea>
-                </li>
-                <li class="error-list hidden">
-                    <label>Error</label>
-                    <ul id = errors>
-                    </ul>
-                </li>
-                <li>
-                    <button type="submit">Submit</button>
-                </li>
-            </ul>
-        </fieldset>
-    </form>
-</section>
-<script type="text/javascript" src="js/main.js"></script>
+        </ul>
+    </section>
+    <section class="container">
+        <form method="POST" id="signIn" onsubmit="return validacion()" >
+            <fieldset>
+                <legend>Sign In</legend>
+                <ul class="flex-outer">
+                    <li>
+                        <label for="first-name">First Name</label>
+                        <input class="required" type="text" id="first-name" placeholder="Enter your first name here"
+                            onblur="valfields('first-name')">
+                        <label class="error-label hidden" id="e-first-name">Error en first-name</label>
+                    </li>
+                    <li>
+                        <label for="last-name">Last Name</label>
+                        <input class="required" type="text" id="last-name" placeholder="Enter your last name here"
+                            onblur="valfields('last-name')">
+                        <label class="error-label hidden" id="e-last-name">Error en last-name</label>
+                    </li>
+                    <li>
+                        <label for="email">Email</label>
+                        <input class="required" type="text" id="email" placeholder="Enter your email here"
+                            onblur="valfields('email')">
+                        <label class="error-label hidden" id="e-email">Error en Email</label>
+                    </li>
+                    <li>
+                        <label for="password">Password</label>
+                        <input class="required" type="password" id="password" placeholder="Enter your password here"
+                            onblur="valfields('password')">
+                        <label class="error-label hidden" id="e-password">Error en password</label>
+                    </li>
+                    <li>
+                        <label for="phone">Phone</label>
+                        <input class="required" type="text" id="phone" placeholder="Enter your phone here"
+                            onblur="valfields('phone')">
+                        <label class="error-label hidden" id="e-phone">Error en phone</label>
+                    </li>
+                    <li>
+                        <p>Vehicle</p>
+                        <ul class="vehicle" id="ulVehicles">
+                            <li>
+                                <input type="checkbox" id="car" name="vehicle" value="car" onclick="TransformCheckBox('car')">
+                                <label for="vehicle">I have a Car</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="bike" name="vehicle" value="bike" onclick="TransformCheckBox('bike')">
+                                <label for="vehicle">I have a Bike</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="motorcycle" name="vehicle" value="motorcycle" onclick="TransformCheckBox('motorcycle')">
+                                <label for="vehicle">I have a Motorcycle</label>
+                            </li>
+                        </ul>
+                        <label class="error-label hidden" id="e-ulVehicles">Select at least one</label>
+                    </li>
+                    <li>
+                        <label for="comments">Comments</label>
+                        <textarea class="required" rows="6" id="comments" placeholder="Enter your comments here"
+                            onblur="valfields('comments')"></textarea>
+                    </li>
+                    <li class="car hidden">
+                        <label>Form Car</label>
+                        <ul id=form-car>
+                            <li>
+                                <label for="make">Make</label>
+                                <input type="text" id="make-car" class = "required" placeholder="Enter how you want to make it"
+                                onblur="validateElementsCB('car', 'make-car')" >
+                                <label class="error-label hidden" id="e-make-car">Error en Make Car</label>
+                            </li>
+                            <li>
+                                <label for="model">Model</label>
+                                <input type="text" id="model-car" placeholder="Enter your car model">
+                            </li>
+                            <li>
+                                <label for="color">Color</label>
+                                <select class = "color required" id = "colorCar" onblur="validateElementsCB('car', 'colorCar')">
+                                    <option value="">Select</option>
+                                    <option value="1">Blue</option>
+                                    <option value="2">Red</option>
+                                    <option value="3">Yellow</option>
+                                    <option value="4">Black</option>
+                                    <option value="5">White</option>
+                                </select>
+                                <label class="error-label hidden" id="e-colorCar">Error en Color Car</label>
+                            </li>
+                            <li>
+                                <label for="doors">Doors</label>
+                                <input type="text" id="doors" class = "required" placeholder="Enter the number of doors" 
+                                onblur ="validateElementsCB('car', 'doors')">
+                                <label class="error-label hidden" id="e-doors">Error en doors</label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="bike hidden">
+                        <label>Form Bike</label>
+                        <ul id=form-bike>
+                            <li>
+                                <label for="make">Make</label>
+                                <input type="text" id="make-bike" placeholder="Enter how you want to make it" class = "required"
+                                onblur="validateElementsCB('bike', 'make-bike')">
+                                <label class="error-label hidden" id="e-make-bike">Error en Make Bike</label>
+                            </li>
+                            <li>
+                                <label for="model">Type</label>
+                                <input type="text" id="type-bike" placeholder="Enter your type bike" class = "required"
+                                onblur="validateElementsCB('bike', 'type-bike')">
+                                <label class="error-label hidden" id="e-type-bike">Error en Type Bike</label>
+                            </li>
+                            <li>
+                                <label for="color">Color</label>
+                                <select class = "color required" id = "colorBike" onblur="validateElementsCB('bike', 'colorBike')">
+                                    <option value="">Select</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Yellow">Yellow</option>
+                                    <option value="Black">Black</option>
+                                    <option value="White">White</option>
+                                </select>
+                                <label class="error-label hidden" id="e-colorBike">Error en Color Bike</label>
+                            </li>
+                            <li>
+                                <p>Accesories</p>
+                                <ul class="accesories required" id = "ulBike" onblur="validateElementsCB('bike', 'ulBike')" >
+                                    <li>
+                                        <input type="checkbox" id="accesories-1" name="accesories" value="basket" onclick="removeError('accesories', 'ulBike')">
+                                        <label>Basket</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="accesories-2" name="accesories" value="disc-brakes"onclick="removeError('accesories', 'ulBike')">
+                                        <label>Disc Brakes</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="accesories-3" name="accesories" value="hexagonal-light" onclick="removeError('accesories', 'ulBike')">
+                                        <label>Hexagonal Light</label>
+                                    </li>
+                                </ul>
+                                <label class="error-label hidden" id="e-ulBike">Select at least one</label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="motorcycle hidden">
+                        <label>Form Motorcycle</label>
+                        <ul id=form-motorcycle>
+                            <li>
+                                <label for="make">Make</label>
+                                <input type="text" id="make-motorcycle" class = "required" placeholder="Enter how you want to make it" onblur="validateElementsCB('motorcycle', 'make-motorcycle')" >
+                                <label class="error-label hidden" id="e-make-motorcycle">Error en Make Motorcycle</label>
+                            </li>
+                            <li>
+                                <label for="model">Model</label>
+                                <input type="text" id="model-motorcycle" placeholder="Enter your motorcyle model">
+                            </li>
+                           <li>
+                                <label for="color">Color</label>
+                                <select class = "color">
+                                    <option value="">Select</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Red">Red</option>
+                                    <option value="Yellow">Yellow</option>
+                                    <option value="Black">Black</option>
+                                    <option value="White">White</option>
+                                </select>
+                            </li>
+                            <li>
+                                <p>Type</p>
+                                <ul class="type required" id = "ulType" onblur="validateElementsCB('motorcycle', 'ulType')">
+                                    <li>
+                                        <input type="radio" id="type-1" name="type" value="basket" onclick="removeError('type', 'ulType')">
+                                        <label>City</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="type-2" name="type" value="disc-brakes" onclick="removeError('type', 'ulType')">
+                                        <label>Road</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" id="type-3" name="type" value="hexagonal-light" onclick="removeError('type', 'ulType')">
+                                        <label>All-Terrain</label>
+                                    </li>
+                                </ul>
+                                <label class="error-label hidden" id="e-ulType">Select one</label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="error-list hidden">
+                        <label>Error</label>
+                        <ul id=errors>
+                        </ul>
+                    </li>
+                    <li>
+                        <button type="submit">Submit</button>
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    </section>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
+
 </html>
